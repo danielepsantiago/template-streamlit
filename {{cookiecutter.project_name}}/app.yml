@@ -1,0 +1,15 @@
+service: {{project_name}}
+env: flex
+runtime: custom
+
+network:
+  name: ca-vpc-tst-dev
+  session_affinity: true
+
+manual_scaling:
+  instances: 1
+
+resources:
+  cpu: 1
+  memory_gb: 1.5
+  disk_size_gb: 20
