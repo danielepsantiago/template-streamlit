@@ -1,9 +1,15 @@
-service: {{project_name}}
+service: {{cookiecutter.project_name}}
 env: flex
-runtime: custom
+runtime: python
+
+runtime_config:
+    operating_system: "ubuntu22"
+    runtime_version: "3.12"
+
+entrypoint: streamlit run --server.port=8080 --server.address=0.0.0.0 --server.enableCORS=false --server.enableWebsocketCompression=false --server.enableXsrfProtection=false --server.headless=true app.py
 
 network:
-  name: ca-vpc-tst-dev
+  name: default
   session_affinity: true
 
 manual_scaling:
@@ -11,5 +17,7 @@ manual_scaling:
 
 resources:
   cpu: 1
-  memory_gb: 1.5
-  disk_size_gb: 20
+  memory_gb: 0.6
+  disk_size_gb: 10
+
+env_variables:
